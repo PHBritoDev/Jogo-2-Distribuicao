@@ -25,6 +25,7 @@ concurrency:
 
 jobs:
   build:
+    if: ${{ github.event_name != 'schedule' || vars.AUTO_DEPLOY_PAGES == 'true' }}
     name: Montar versao publica sem documentos internos
     runs-on: ubuntu-latest
     timeout-minutes: 30
