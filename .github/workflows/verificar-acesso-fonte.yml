@@ -14,10 +14,10 @@ jobs:
     name: Testar acesso e gerar o jogo sem publicar
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    env:
-      SOURCE_READ_TOKEN: ${{ secrets.SOURCE_READ_TOKEN }}
     steps:
       - name: Confirmar que o token de leitura foi configurado
+        env:
+          SOURCE_READ_TOKEN: ${{ secrets.SOURCE_READ_TOKEN }}
         shell: bash
         run: |
           if [ -z "$SOURCE_READ_TOKEN" ]; then
