@@ -2,6 +2,9 @@ name: Validar acesso privado antes da migracao
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/verificar-acesso-fonte.yml']
 
 permissions:
   contents: read
