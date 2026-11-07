@@ -29,7 +29,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: Confirmar credencial privada de leitura\n        env:\n          SOURCE_READ_TOKEN: ${{ secrets.SOURCE_READ_TOKEN }}\n        run: |\n          if [ -z "$SOURCE_READ_TOKEN" ]; then\n            echo "::error::SOURCE_READ_TOKEN nao esta configurado; publicacao cancelada sem fallback de autenticacao."\n            exit 1\n          fi\n      - name: Buscar projeto original com credenciais de leitura apenas
+      - name: Confirmar credencial privada de leitura
+        env:
+          SOURCE_READ_TOKEN: ${{ secrets.SOURCE_READ_TOKEN }}
+        run: |
+          if [ -z "$SOURCE_READ_TOKEN" ]; then
+            echo "::error::SOURCE_READ_TOKEN nao esta configurado; publicacao cancelada sem fallback de autenticacao."
+            exit 1
+          fi
+      - name: Buscar projeto original com credenciais de leitura apenas
         uses: actions/checkout@v4
         with:
           repository: PHBritoDev/Jogo-2-2.5D
